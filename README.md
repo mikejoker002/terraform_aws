@@ -27,5 +27,20 @@ sudo ./terraform_install.sh
 6. To delete the created storage , run the destroy command
    terraform destroy
    
+## Creating the VPC in aws
+
+1. go to the folder network
+   cd network
+2. Initialize the terraform
+   terraform init
+3. Dry run the terraform script
+   terraform plan
+4. create the VPC by applying the code in terraform
+   terraform apply
+5. Now the VPC is created in your account.
+6. To delete the created VPC , run the destroy command
+   terraform destroy
+   
+   
  
 
