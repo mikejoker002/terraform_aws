@@ -25,7 +25,7 @@ done
 ######### Installing the terraform pacakge ################
 for pkg in $terra; do
         which $pkg > /dev/null 2>&1
-          if [ $? == 0 ]
+          if [ "$?" == 0 ]
             then
                 version=`terraform -version | grep Terraform |awk '{print $2}'`
                 echo "$pkg already installed installed : $version"
@@ -34,8 +34,9 @@ for pkg in $terra; do
                  cd /tmp
                  wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip > /dev/null 2>&1
                  unzip terraform_0.11.13_linux_amd64.zip -d /usr/local/bin/ > /dev/null 2>&1
+                 ln -s /usr/local/bin/terraform /usr/sbin/terraform
                  version=`terraform -version | grep Terraform |awk '{print $2}'`
-                echo " Terraform installed : $version "
+                 echo " Terraform installed : $version "
                  rm -rf /tmp/terraform_0.11.13_linux_amd64.zip
         fi
 

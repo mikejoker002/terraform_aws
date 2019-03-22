@@ -1,5 +1,10 @@
 #----------------networking/var.tf-----------------
 
-variable "vpc_cidr" {
-  default = "10.163.0.0/16"
+variable "vpc_cidr" {}
+
+variable "public_cidrs" {
+  type = "list"
+}
+
+variable "accessip" {
 }
