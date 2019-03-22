@@ -35,7 +35,7 @@ resource "aws_instance" "tf_mypro_server" {
     Name = "tf_server-${count.index +1}"
   }
 
-  key_name               = "${aws_key_pair.tf_auth.id}"
+  key_name               = "${aws_key_pair.tf_mypro_auth.id}"
   vpc_security_group_ids = ["${var.security_group}"]
   subnet_id              = "${element(var.subnets, count.index)}"
   user_data              = "${data.template_file.user-init.*.rendered[count.index]}"

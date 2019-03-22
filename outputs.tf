@@ -4,18 +4,18 @@ output "Bucket Name" {
    value = "${module.storage.bucketname}"
 }
 
-#### ----------- networking/output.tf -------------####
+#### ----------- network/output.tf -------------####
 
 output "Public Subnets" {
   value = "${join(", ", module.network.public_subnets)}"
 }
 
 output "Subnet IPs" {
-  value = "${join(", ", module.networking.subnet_ips)}"
+  value = "${join(", ", module.network.subnet_ips)}"
 }
 
 output "Public Security Group" {
-  value = "${module.networking.public_sg}"
+  value = "${module.network.public_sg}"
 }
 
 #---Compute Outputs ------
