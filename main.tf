@@ -21,7 +21,7 @@ module "compute" {
   key_name        = "${var.key_name}"
   public_key_path = "${var.public_key_path}"
   instance_type   = "${var.server_instance_type}"
-  subnets         = "${module.networking.public_subnets}"
-  security_group  = "${module.networking.public_sg}"
-  subnet_ips      = "${module.networking.subnet_ips}"
+  subnets         = "${module.network.public_subnets}"
+  security_group  = "${module.network.public_sg}"
+  subnet_ips      = "${module.network.subnet_ips}"
 }

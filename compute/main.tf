@@ -1,3 +1,5 @@
+###########----------------Compute/main.tf--------------###########
+
 data "aws_ami" "tf_mypro_ami" {
   most_recent = true
 
@@ -8,8 +10,10 @@ data "aws_ami" "tf_mypro_ami" {
 
   filter {
     name   = "name"
-    values = ["amzn-ami-hvm*-x86_64-gp2"]
+    values = ["amzn2-ami-hvm-2.0.????????-x86_64-gp2"]
   }
+
+  owners = ["137112412989"]
 }
 
 resource "aws_key_pair" "tf_mypro_auth" {
@@ -35,7 +39,7 @@ resource "aws_instance" "tf_mypro_server" {
     Name = "tf_server-${count.index +1}"
   }
 
-  key_name               = "${aws_key_pair.tf_auth.id}"
+  key_name               = "${aws_key_pair.tf_mypro_auth.id}"
   vpc_security_group_ids = ["${var.security_group}"]
   subnet_id              = "${element(var.subnets, count.index)}"
   user_data              = "${data.template_file.user-init.*.rendered[count.index]}"
